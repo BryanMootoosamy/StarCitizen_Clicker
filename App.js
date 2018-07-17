@@ -22,10 +22,10 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <StatusBar hidden={true} />
-                <View style={{width: this.state.width}}>
-                    <ImageBackground source={background} style={{width: this.state.width, height: this.state.height}}>
+                <View style={{width: this.state.width, height: this.state.height}}>
+                    <ImageBackground source={background} style={{width: this.state.width, height: this.state.height, zIndex : 0}}>
                         <Clicker screenWidth={this.state.width} screenHeight={this.state.height} />
                     </ImageBackground>
                 </View>
@@ -33,12 +33,3 @@ export default class App extends React.Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#F5FCFF",
-    },
-});
