@@ -8,7 +8,8 @@ export default class Clicker extends React.Component{
         this.state={
             score: 0,
             height: this.props.screenHeight,
-            width: this.props.screenWidth
+            width: this.props.screenWidth,
+            scale: this.props.screenWidth
         };
     }
     clicker = () => {
@@ -18,14 +19,12 @@ export default class Clicker extends React.Component{
     }
     zoomIn = () => {
         this.setState({
-            height: this.state.height / 1.1,
-            width: this.state.width / 1.1
+            scale: this.state.scale / 1.1
         })
     }
     zoomOut = () => {
         this.setState({
-            height: this.state.height * 1.1,
-            width: this.state.width * 1.1
+            scale: this.state.scale * 1.1
         })
     }
     render(){
@@ -36,7 +35,7 @@ export default class Clicker extends React.Component{
                 </View>
                 <View style={{borderWidth: 2, borderColor: "#0FF"}} >
                     <TouchableOpacity style={{borderWidth: 2, borderColor: "#F0F", height: this.state.height / 3.5, marginTop: this.state.height / 5}} activeOpacity={1} onPress={this.clicker} onPressIn={this.zoomIn} onPressOut={this.zoomOut}>
-                        <Image source={ship} style={{width: this.state.width / 1.1,flex: 1,resizeMode: "center"}} />
+                        <Image source={ship} style={{width: this.state.scale / 1.1,flex: 1,resizeMode: "center", justifyContent:"space-around", alignContent: "center"}} />
                     </TouchableOpacity>
                 </View>
             </View>
