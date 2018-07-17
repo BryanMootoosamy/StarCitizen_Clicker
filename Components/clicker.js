@@ -7,8 +7,8 @@ export default class Clicker extends React.Component{
         super(props);
         this.state={
             score: 0,
-            height: this.props.screenHeight / 1.1,
-            width: this.props.screenWidth / 1.1
+            height: this.props.screenHeight,
+            width: this.props.screenWidth
         };
     }
     clicker = () => {
@@ -30,13 +30,13 @@ export default class Clicker extends React.Component{
     }
     render(){
         return(
-            <View style={{zIndex: 1}}>
-                <View style={{flex: 1}}>
+            <View style={{height: this.state.height, borderWidth: 2, borderColor: "#FFF"}}>
+                <View style={{borderWidth: 2, borderColor: "#FF0"}}>
                     <Text style={Styles.score}>{this.state.score} Vanduuls Killed</Text>
                 </View>
-                <View style={{flex: 0, height: this.state.height / 1.5, }}>
-                    <TouchableOpacity  activeOpacity={1} onPress={this.clicker} onPressIn={this.zoomIn} onPressOut={this.zoomOut}>
-                        <Image source={ship} style={{width: this.state.width, height: this.state.height, resizeMode: "contain"}} />
+                <View style={{borderWidth: 2, borderColor: "#0FF"}} >
+                    <TouchableOpacity style={{borderWidth: 2, borderColor: "#F0F", height: this.state.height / 3.5, marginTop: this.state.height / 5}} activeOpacity={1} onPress={this.clicker} onPressIn={this.zoomIn} onPressOut={this.zoomOut}>
+                        <Image source={ship} style={{width: this.state.width / 1.1,flex: 1,resizeMode: "center"}} />
                     </TouchableOpacity>
                 </View>
             </View>
