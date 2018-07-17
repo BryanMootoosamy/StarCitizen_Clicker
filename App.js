@@ -8,27 +8,33 @@ import React, { Component } from 'react';
 import {
   View,
   StyleSheet,
-  Image,
+  ImageBackground,
   Dimensions,
   StatusBar
 } from 'react-native';
 import background from "./assets/images/background.jpg";
+import Clicker from "./Components/clicker.js"
 
 
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    let {width} = Dimensions.get("window");
+    let {width, height} = Dimensions.get("window");
     this.state = {
       width: width,
+      height: height
     }
   }
   render() {
     return (
       <View style={styles.container}>
         <StatusBar hidden={true} />
-        <Image source={background} style={{width: this.state.width, flex: 1}} />
+        <View style={{width: this.state.width}}>
+         <ImageBackground source={background} style={{width: this.state.width, height: this.state.height}}>
+          <Clicker />
+         </ImageBackground>
+        </View>
       </View>
     );
   }
