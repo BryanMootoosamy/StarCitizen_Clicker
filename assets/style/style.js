@@ -4,5 +4,5 @@ export default {
         fontSize: 30,
         textAlign: "center",
         marginTop: 30,
-    }
+    },
 };
