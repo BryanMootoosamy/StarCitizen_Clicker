@@ -14,13 +14,13 @@ export default class Clicker extends React.Component{
             width: this.props.screenWidth,
             scale: this.props.screenWidth,
             AttackLevel: 1,
-            ACLevel: 1,
+            ACLevel: 0,
             RocketLevel: 1
         };
     }
     clicker = () => {
         this.setState({
-            score: this.state.score + (this.state.AttackLevel * 1),
+            score: this.state.score + (this.state.AttackLevel * this.state.RocketLevel),
         });
     }
     zoomIn = () => {
@@ -35,26 +35,34 @@ export default class Clicker extends React.Component{
     }
     cannon = () => {
         this.setState({
-            score: this.state.score - (10 * this.state.AttackLevel)
+            score: this.state.score - (100 * this.state.AttackLevel)
         })
         this.state.AttackLevel ++;
 
     }
     cannon2 = () => {
         this.setState({
-            score : this.state.score -(20 * this.state.ACLevel)
+            score : this.state.score -(200 * (this.state.ACLevel + 1)),
+            ACLevel: this.state.ACLevel + 1
         })
-        this.state.ACLevel ++;
+    
         this.ACState = true;
     }
     rocket = () => {
         this.setState({
-            score: this.state.score -(30 * this.state.RocketLevel)
+            score: this.state.score -(500 * this.state.RocketLevel)
         })
-        this.state.RocketLevel ++
+        this.setState({
+            RocketLevel: 2
+        })
+        setTimeout(() => {
+            this.setState({
+                RocketLevel: 1
+            })
+        }, 30000)
     }
     Bonus1 = () => {
-        if (this.state.score >= 10 * this.state.AttackLevel) {
+        if (this.state.score >= 100 * this.state.AttackLevel) {
             return (
                 <TouchableOpacity onPress={()=>{this.cannon()}}>
                     <Image style={{width: this.state.width / 3, height: this.state.height / 3, resizeMode: "center"}} source={cannon} />
@@ -63,7 +71,7 @@ export default class Clicker extends React.Component{
         }
     }
     Bonus2 = () => {
-        if (this.state.score >= 20 * this.state.ACLevel) {
+        if (this.state.score >= 200 * (this.state.ACLevel + 1)) {
             return (
                 <TouchableOpacity onPress={() => {this.cannon2();}}>
                     <Image style={{width: this.state.width / 3.5, resizeMode: "contain"}} source={cannon2} />
@@ -72,7 +80,7 @@ export default class Clicker extends React.Component{
         }
     }
     Bonus3 = () => {
-        if (this.state.score >= 30 * this.state.RocketLevel) {
+        if (this.state.score >= 500 * this.state.RocketLevel) {
             return (
                 <TouchableOpacity onPress={() => {this.rocket()}}>
                     <Image style={{width: this.state.width / 3.5, resizeMode: "contain"}} source={rocket} />
@@ -80,32 +88,46 @@ export default class Clicker extends React.Component{
             )
         }
     }
+    interval = undefined;
     Autoclick = () => {
         if (this.ACState == true) {
-            setInterval(function(){
+            if (this.interval == undefined) {
+                interval = setInterval(function(){
+                    this.setState({
+                        score: (this.state.score + ((1 * (this.state.ACLevel)) * this.state.RocketLevel))
+                    })
+                }.bind(this), 1000)
+            }
+            else {
                 this.setState({
-                    score: (this.state.score + ((1 * (this.state.ACLevel - 1)) * this.state.RocketLevel))
-                })
-            }.bind(this), 1000)
+                    ACLevel: this.state.ACLevel + 1
+                });
+            }
+            
         }
-        console.log("score " + this.state.score)
+        this.ACState = false;
     }
     render(){
         let ACState = false;
+        this.Autoclick();
         return(
-            <View style={{height: this.state.height, borderWidth: 2, borderColor: "#FFF"}}>
-                <View style={{borderWidth: 2, borderColor: "#FF0"}}>
+            <View style={{height: this.state.height,}}>
+                <View>
                     <Text style={Styles.score}>{this.state.score} Vanduuls Killed</Text>
                 </View>
-                <View style={{borderWidth: 2, borderColor: "#0FF"}} >
-                    <TouchableOpacity style={{borderWidth: 2, borderColor: "#F0F", height: this.state.height / 3.5, marginTop: this.state.height / 5}} activeOpacity={1} onPress={this.clicker} onPressIn={this.zoomIn} onPressOut={this.zoomOut}>
+                <View>
+                    <Text style={Styles.score}>Bonus Counter</Text>
+                    <Text style={{fontSize: 20, color: "#FFF", marginLeft: this.state.width / 4.1}}>Behring: x{this.state.AttackLevel}  Bulldog: x{this.state.ACLevel}</Text>
+                </View>
+                <View>
+                    <TouchableOpacity style={{height: this.state.height / 3.5, marginTop: this.state.height / 15}} activeOpacity={1} onPress={this.clicker} onPressIn={this.zoomIn} onPressOut={this.zoomOut}>
                         <Image source={ship} style={{width: this.state.scale / 1.1,flex: 1,resizeMode: "center", justifyContent:"space-around", alignContent: "center"}} />
                     </TouchableOpacity>
                 </View>
-                <View style={{borderWidth: 2, borderColor: "#7AF", width: this.state.width, height: this.state.height / 3.2}}>
+                <View style={{width: this.state.width, height: this.state.height / 3.2}}>
                     <Text style={Styles.score}>Bonus</Text>
                     
-                    <View style={{borderWidth: 2, borderColor: "#FF0", flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
+                    <View style={{flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
                         {this.Bonus1()}
                         {this.Bonus2()}
                         {this.Bonus3()}
