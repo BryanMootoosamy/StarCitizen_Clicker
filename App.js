@@ -5,31 +5,45 @@
  */
 
 import React from "react";
-import {View, StyleSheet, ImageBackground, Dimensions, StatusBar} from "react-native";
-import background from "./assets/images/background.jpg";
+import {Image} from "react-native"
+import {createBottomTabNavigator} from "react-navigation";
 import Clicker from "./Components/clicker.js";
+import Apropos from "./Components/apropos.js";
+import gameIco from "./assets/images/gameIco.png";
+import aboutIco from "./assets/images/about.png";
 
-
+Clicker.navigationOptions = {
+    tabBarIcon: () => {
+        return (<Image source={gameIco} style={{height: 20, width: 20, resizeMode: "contain"}} />)
+    }
+}
+Apropos.navigationOptions = {
+    tabBarIcon: () => {
+        return (<Image source={aboutIco} style={{height: 20, width: 20, resizeMode: "contain"}} />)
+    }
+}
+const NavTab = createBottomTabNavigator(
+    {
+        Clicker,
+        Apropos
+    },
+    {
+        tabBarOptions: {
+            showIcon: true,
+            showLabel: false,
+            style: {
+                backgroundColor: "#003153",
+            },
+            activeBackgroundColor: "#004f86"
+        },
+        
+    }
+);
 
 export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        let {width, height} = Dimensions.get("window");
-        this.state = {
-            width: width,
-            height: height
-        };
-    }
     render() {
         return (
-            <View>
-                <StatusBar hidden={true} />
-                <View style={{width: this.state.width, height: this.state.height}}>
-                    <ImageBackground source={background} style={{width: this.state.width, height: this.state.height, zIndex : 0}}>
-                        <Clicker screenWidth={this.state.width} screenHeight={this.state.height} />
-                    </ImageBackground>
-                </View>
-            </View>
+            <NavTab />         
         );
     }
 }
