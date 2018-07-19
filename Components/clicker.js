@@ -44,7 +44,8 @@ export default class Clicker extends React.Component{
         this.setState({
             score : this.state.score -(20 * this.state.ACLevel)
         })
-        this.state.ACLevel ++
+        this.state.ACLevel ++;
+        this.ACState = true;
     }
     rocket = () => {
         this.setState({
@@ -64,7 +65,7 @@ export default class Clicker extends React.Component{
     Bonus2 = () => {
         if (this.state.score >= 20 * this.state.ACLevel) {
             return (
-                <TouchableOpacity onPress={() => {this.cannon2()}}>
+                <TouchableOpacity onPress={() => {this.cannon2();}}>
                     <Image style={{width: this.state.width / 3.5, resizeMode: "contain"}} source={cannon2} />
                 </TouchableOpacity>
             )
@@ -79,7 +80,18 @@ export default class Clicker extends React.Component{
             )
         }
     }
+    Autoclick = () => {
+        if (this.ACState == true) {
+            setInterval(function(){
+                this.setState({
+                    score: (this.state.score + ((1 * (this.state.ACLevel - 1)) * this.state.RocketLevel))
+                })
+            }.bind(this), 1000)
+        }
+        console.log("score " + this.state.score)
+    }
     render(){
+        let ACState = false;
         return(
             <View style={{height: this.state.height, borderWidth: 2, borderColor: "#FFF"}}>
                 <View style={{borderWidth: 2, borderColor: "#FF0"}}>
