@@ -3,5 +3,6 @@ This project is a little clicker game I made at first for a training with React 
 
 ## tech and language used
 
--Javascript
--React-Native
+- Javascript
+
+- React-Native
