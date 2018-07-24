@@ -1,4 +1,4 @@
-package com.sc_clicker;
+package com.starcitizenclicker;
 
 import android.app.Application;
 

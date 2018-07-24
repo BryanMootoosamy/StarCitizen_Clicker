@@ -152,11 +152,6 @@ export default class Clicker extends React.Component{
                 this.state.interval = 1;
                 this.dataToSave('interval', this.state.inteval);
             }
-            else {
-                this.setState({
-                    ACLevel: this.state.ACLevel + 1
-                });
-            }
             
         }
         this.state.ACState = false;

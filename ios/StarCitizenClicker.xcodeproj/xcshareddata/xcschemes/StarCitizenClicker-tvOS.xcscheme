@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "SC_clicker-tvOS.app"
-               BlueprintName = "SC_clicker-tvOS"
-               ReferencedContainer = "container:SC_clicker.xcodeproj">
+               BuildableName = "StarCitizenClicker-tvOS.app"
+               BlueprintName = "StarCitizenClicker-tvOS"
+               ReferencedContainer = "container:StarCitizenClicker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "SC_clicker-tvOSTests.xctest"
-               BlueprintName = "SC_clicker-tvOSTests"
-               ReferencedContainer = "container:SC_clicker.xcodeproj">
+               BuildableName = "StarCitizenClicker-tvOSTests.xctest"
+               BlueprintName = "StarCitizenClicker-tvOSTests"
+               ReferencedContainer = "container:StarCitizenClicker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "SC_clicker-tvOSTests.xctest"
-               BlueprintName = "SC_clicker-tvOSTests"
-               ReferencedContainer = "container:SC_clicker.xcodeproj">
+               BuildableName = "StarCitizenClicker-tvOSTests.xctest"
+               BlueprintName = "StarCitizenClicker-tvOSTests"
+               ReferencedContainer = "container:StarCitizenClicker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "SC_clicker-tvOS.app"
-            BlueprintName = "SC_clicker-tvOS"
-            ReferencedContainer = "container:SC_clicker.xcodeproj">
+            BuildableName = "StarCitizenClicker-tvOS.app"
+            BlueprintName = "StarCitizenClicker-tvOS"
+            ReferencedContainer = "container:StarCitizenClicker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "SC_clicker-tvOS.app"
-            BlueprintName = "SC_clicker-tvOS"
-            ReferencedContainer = "container:SC_clicker.xcodeproj">
+            BuildableName = "StarCitizenClicker-tvOS.app"
+            BlueprintName = "StarCitizenClicker-tvOS"
+            ReferencedContainer = "container:StarCitizenClicker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "SC_clicker-tvOS.app"
-            BlueprintName = "SC_clicker-tvOS"
-            ReferencedContainer = "container:SC_clicker.xcodeproj">
+            BuildableName = "StarCitizenClicker-tvOS.app"
+            BlueprintName = "StarCitizenClicker-tvOS"
+            ReferencedContainer = "container:StarCitizenClicker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
